@@ -1,7 +1,9 @@
 package com.example.controller;
 
 import com.example.entity.CourseEntity;
+import com.example.entity.StudentEntity;
 import com.example.model.Course;
+import com.example.model.Student;
 import com.example.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +32,18 @@ public class CourseController {
     public String addCourse(@RequestBody Course course){
         service.addCourse(course);
         return "Course Added..";
+    }
+
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteCourse(@PathVariable int id){
+        return service.deleteCourse(id) ? "Course delete" : "Failed to delete course";
+    }
+
+    @PutMapping("/updatecourse/{id}")
+    public String updateCourse(@PathVariable int id, @RequestBody Course course){
+        return (service.updateCourse(id,course))
+                ? "Course Updated ":"Failed to update";
     }
 
     @GetMapping("/courseid")

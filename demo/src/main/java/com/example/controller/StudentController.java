@@ -6,7 +6,6 @@ import com.example.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -23,7 +22,6 @@ public class StudentController {
     @PostMapping("/addstudent")
     public String addStudent(@RequestBody Student student){
         studentService.addStudent(student);
-
         return "Student Added";
     }
 
@@ -32,19 +30,23 @@ public class StudentController {
         return studentService.getStudents();
     }
 
-
-    @GetMapping("/roll")
-    public String getRoll(){
-        return "The roll number is :: 12";
-    }
-
-    @GetMapping("/name")
-    public String getName(){
-        return "<h1>Name : Chetan bachchhav </h1>";
-    }
-
     @GetMapping("email")
     public String getEmail(){
         return "Email";
+    }
+
+    @PutMapping("/update/{id}")
+    public String updateStudent(@PathVariable int id, @RequestBody Student student){
+        return studentService.updateStudent(id,student) ? "Student Updated..." : "Failed to update...";
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteStudent(@PathVariable int id){
+        return studentService.deleteStudent(id) ? "Student deleted..." : "Failed to delete";
+    }
+
+    @GetMapping("/get/{id}")
+    public Student getStudent(@PathVariable int id){
+        return studentService.getStudent(id);
     }
 }

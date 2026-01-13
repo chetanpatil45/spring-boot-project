@@ -1,17 +1,18 @@
-package com.example.entity;
+package com.example.model;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CourseEntity {
+public class Course {
     private int id;
     private String name;
     private int fees;
     private int duration;
 
-    public CourseEntity(){}
+    public Course(){}
 
-    public CourseEntity(int id, String name, int fees, int duration) {
+    public Course(int id, String name, int fees, int duration) {
         this.id = id;
         this.name = name;
         this.fees = fees;
@@ -42,21 +43,11 @@ public class CourseEntity {
         this.fees = fees;
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
     public int getDuration() {
         return duration;
     }
 
-    @Override
-    public String toString() {
-        return "CourseEntity{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", fees=" + fees +
-                ", duration=" + duration +
-                '}';
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 }

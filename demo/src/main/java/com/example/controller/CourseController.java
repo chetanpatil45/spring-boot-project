@@ -1,9 +1,10 @@
 package com.example.controller;
 
 import com.example.entity.CourseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.model.Course;
+import com.example.service.CourseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,22 +13,23 @@ import java.util.List;
 @RequestMapping("/studentapi/courses")
 public class CourseController {
 
-
+    @Autowired
+    CourseService service;
 
     @GetMapping()
     public String demo(){
         return "Courses -> ";
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/allcourses")
     public List<CourseEntity> getAllCourse(){
-        List<CourseEntity> list = new ArrayList<>();
+        return service.getCourses();
+    }
 
-//        list.add(new CourseEntity(101,"Java",3500));
-//        list.add(new CourseEntity(102,"Python",4000));
-//        list.add(new CourseEntity(103,"C++",3000));
-
-        return list;
+    @PostMapping("/addcourse")
+    public void addCourse(@RequestBody Course course){
+        service.addCourse(course);
+        return;
     }
 
     @GetMapping("/courseid")

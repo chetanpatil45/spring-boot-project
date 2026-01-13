@@ -1,6 +1,9 @@
 package com.example.controller;
 
 import com.example.entity.StudentEntity;
+import com.example.model.Student;
+import com.example.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -9,27 +12,22 @@ import java.util.List;
 @RestController
 @RequestMapping("/studentapi/students")
 public class StudentController {
-    List<StudentEntity> list = new ArrayList<>();
+    @Autowired
+    StudentService studentService;
 
     @GetMapping
     public String demo(){
-        list.add(new StudentEntity(1,"chetan","chetan@gmail.com"));
-        list.add(new StudentEntity(2,"prafulla","prafulla@gmail.com"));
-        list.add(new StudentEntity(3,"dipak","dipak@gmail.com"));
-        list.add(new StudentEntity(4,"prakash","prakash@gmail.com"));
-        list.add(new StudentEntity(5,"dhiraj","dhiraj@gmail.com"));
-
         return "Students -> ";
     }
 
     @PostMapping("/addstudent")
-    public void addStudent(@RequestBody StudentEntity student){
-        list.add(student);
+    public void addStudent(@RequestBody Student student){
+        studentService.addStudent(student);
     }
 
     @GetMapping("/allstudents")
     public List<StudentEntity> getAllStudents(){
-        return list;
+        return studentService.getStudents();
     }
 
 

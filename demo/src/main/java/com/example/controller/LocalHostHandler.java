@@ -13,8 +13,7 @@ public class LocalHostHandler {
         return "Welcome....!";
     }
 
-
-    @GetMapping("studentapi")
+   @GetMapping("studentapi")
     public String demo(){
         return "<h1>Hello Student</h1>";
     }

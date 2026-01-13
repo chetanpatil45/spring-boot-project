@@ -1,10 +1,15 @@
 package com.example.entity;
 
+import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
-@Component
+@Entity
+@Table(name = "courseinfo")
 public class CourseEntity {
+    @Id
     private int id;
+
+
     private String name;
     private int fees;
     private int duration;

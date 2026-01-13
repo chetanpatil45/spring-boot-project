@@ -27,9 +27,9 @@ public class CourseController {
     }
 
     @PostMapping("/addcourse")
-    public void addCourse(@RequestBody Course course){
+    public String addCourse(@RequestBody Course course){
         service.addCourse(course);
-        return;
+        return "Course Added..";
     }
 
     @GetMapping("/courseid")

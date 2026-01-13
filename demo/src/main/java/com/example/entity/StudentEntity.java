@@ -1,10 +1,14 @@
 package com.example.entity;
 
+import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
-@Component
+@Entity
+@Table(name = "studentinfo")
 public class StudentEntity {
+    @Id
     private int id;
+
     private String name;
     private String email;
     private int age;

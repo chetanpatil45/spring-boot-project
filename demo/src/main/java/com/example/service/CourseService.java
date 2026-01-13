@@ -2,20 +2,22 @@ package com.example.service;
 
 import com.example.entity.CourseEntity;
 import com.example.model.Course;
+import com.example.repository.CourseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class CourseService {
-    private List<CourseEntity> courses = new ArrayList<>();
-    private CourseEntity courseEntity;
+//    private List<CourseEntity> courses = new ArrayList<>();
+    private CourseEntity courseEntity = new CourseEntity();
+
+    private CourseRepo courseRepo;
 
     @Autowired
-    public CourseService(CourseEntity courseEntity){
-        this.courseEntity = courseEntity;
+    public CourseService(CourseRepo repo){
+        this.courseRepo = repo;
     }
 
     public void addCourse(Course course){
@@ -24,10 +26,13 @@ public class CourseService {
         courseEntity.setFees(course.getFees());
         courseEntity.setDuration(course.getDuration());
 
-        courses.add(courseEntity);
+        courseRepo.save(courseEntity);
+
+//        courses.add(courseEntity);
     }
 
     public List<CourseEntity> getCourses(){
-        return courses;
+//        return courses;
+        return courseRepo.findAll();
     }
 }

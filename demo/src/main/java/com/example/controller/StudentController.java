@@ -40,4 +40,9 @@ public class StudentController {
     public String getName(){
         return "<h1>Name : Chetan bachchhav </h1>";
     }
+
+    @GetMapping("email")
+    public String getEmail(){
+        return "Email";
+    }
 }

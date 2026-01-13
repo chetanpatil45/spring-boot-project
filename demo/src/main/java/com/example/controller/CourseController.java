@@ -11,7 +11,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/studentapi/courses")
 public class CourseController {
-    @GetMapping
+
+    @GetMapping()
+    public String demo(){
+        return "Courses -> ";
+    }
+
+    @GetMapping("/getall")
     public List<CourseEntity> getAllCourse(){
         List<CourseEntity> list = new ArrayList<>();
 
@@ -20,5 +26,20 @@ public class CourseController {
         list.add(new CourseEntity(103,"C++",3000));
 
         return list;
+    }
+
+    @GetMapping("/courseid")
+    public String getCourseId(){
+        return "Course id :: ";
+    }
+
+    @GetMapping("/coursename")
+    public String getCourseName(){
+        return "Course Name :: ";
+    }
+
+    @GetMapping("/course")
+    public CourseEntity getCourse(){
+        return new CourseEntity();
     }
 }

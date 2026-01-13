@@ -9,15 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/studentapi")
+@RequestMapping("/studentapi/students")
 public class StudentController {
 
     @GetMapping
     public String demo(){
-        return "<h1>Hello world</h1>";
+        return "Students -> ";
     }
 
-    @GetMapping("/students")
+    @GetMapping("/allstudents")
     public List<StudentEntity> getAllStudents(){
         List<StudentEntity> list = new ArrayList<>();
 

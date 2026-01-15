@@ -56,8 +56,8 @@ public class CourseController {
         return "Course Name :: ";
     }
 
-    @GetMapping("/course")
-    public CourseEntity getCourse(){
-        return new CourseEntity();
+    @GetMapping("/get/{id}")
+    public Course getCourse(@PathVariable int id){
+        return service.getStudent(id);
     }
 }

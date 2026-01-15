@@ -3,6 +3,7 @@ package com.example.service;
 import com.example.entity.CourseEntity;
 import com.example.entity.StudentEntity;
 import com.example.model.Course;
+import com.example.model.Student;
 import com.example.repository.CourseRepo;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,5 +66,17 @@ public class CourseService {
         }
 
         return false;
+    }
+
+    public Course getStudent(int id) {
+        CourseEntity courseEntity;
+        try {
+            courseEntity = courseRepo.findById(id)
+                    .orElseThrow(() -> new RuntimeException("No course with this id"));
+
+            return new Course(courseEntity.getId(), courseEntity.getName(), courseEntity.getFees(), courseEntity.getDuration());
+        } catch (RuntimeException e) {
+            return null;
+        }
     }
 }

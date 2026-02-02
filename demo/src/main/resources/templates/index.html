@@ -53,7 +53,7 @@
             age: 22
         },
         {
-            name: "Chetan Bachchhav",
+            name: "Chetan Patil",
             email: "bachchhavchetan45@gmail.com",
             age: 22
         }
@@ -67,25 +67,30 @@
 
         students.forEach((s, i) => {
             container.innerHTML += `
-                <div class="student-card">
+            <div class="student-card">
 
-                    <div class="avatar">
-                        ${s.name.split(" ").map(w => w[0]).join("")}
-                    </div>
-
-                    <div class="student-info">
-                        <p><b>Name:</b> ${s.name}</p>
-                        <p><b>Email:</b> ${s.email}</p>
-                        <p><b>Age:</b> ${s.age}</p>
-                    </div>
-
-                    <div class="actions">
-                        <button class="edit" onclick="editStudent(${i})">Edit</button>
-                        <button class="delete" onclick="deleteStudent(${i})">Delete</button>
-                    </div>
-
+                <div class="left">
+                <div class="avatar">
+                    ${s.name.split(" ").map(w => w[0]).join("")}
                 </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="right">
+                <p><b>Name:</b> ${s.name}</p>
+                <p><b>Email:</b> ${s.email}</p>
+                <p><b>Age:</b> ${s.age}</p>
+
+                <div class="actions">
+                    <button class="edit" onclick="editStudent(${i})">EDIT</button>
+                    <button class="delete" onclick="deleteStudent(${i})">DELETE</button>
+                </div>
+                </div>
+
+            </div>
             `;
+
         });
     }
 

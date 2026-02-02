@@ -2,19 +2,16 @@ package com.example.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/")
+@Controller
 public class LocalHostHandler {
-    @GetMapping
+    @GetMapping({"/","/home"})
     public String openLocalHost(){
-        return "Welcome....!";
+        return "index";
     }
 
-   @GetMapping("studentapi")
-    public String demo(){
-        return "<h1>Hello Student</h1>";
-    }
+//   @GetMapping("studentapi")
+//    public String demo(){
+//        return "<h1>Hello Student</h1>";
+//    }
 }

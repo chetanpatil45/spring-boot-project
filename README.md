@@ -126,23 +126,6 @@ This includes:
 * Server port
 * Database configuration
 * JPA/Hibernate settings
-
----
-
-## 🧪 Testing
-
-Tests are located under:
-
-```
-src/test/java
-```
-
-Run tests with:
-
-```bash
-./mvnw test
-```
-
 ---
 
 ## 📌 Notes

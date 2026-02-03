@@ -151,4 +151,3 @@ Run tests with:
 * The structure is designed for scalability and maintainability.
 * Ideal as a starter template or learning project.
 
-===================================================

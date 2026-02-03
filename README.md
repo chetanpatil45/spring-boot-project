@@ -1,9 +1,5 @@
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0f8c02a9-14f9-41b5-8e9f-6f3826a2d99a" />
 
-Sure! Here’s a clean, beginner-friendly **README.md** tailored to the project structure you shared. You can copy-paste this directly into a `README.md` file at the root of your project.
-
----
-
 # Demo Spring Boot Application
 
 This is a **Spring Boot** demo application following a layered architecture (Controller → Service → Repository) with **Thymeleaf** for server-side rendering and **CSS** for static styling.
@@ -155,11 +151,4 @@ Run tests with:
 * The structure is designed for scalability and maintainability.
 * Ideal as a starter template or learning project.
 
----
-
-If you want, I can also:
-
-* Add **database setup instructions**
-* Customize this for **REST APIs**
-* Write a **Docker section**
-* Or tailor it for **your specific use case** 😄
+===================================================

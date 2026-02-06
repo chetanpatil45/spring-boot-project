@@ -6,25 +6,25 @@ import org.springframework.stereotype.Component;
 @Component
 public class Student {
 
-    private int id;
+    private Integer id;
     private String name;
     private String email;
-    private int age;
+    private Integer age;
 
     public Student(){}
 
-    public Student(int id, String name, String email,int age) {
+    public Student(Integer id, String name, String email,Integer age) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.age = age;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -44,11 +44,11 @@ public class Student {
         this.email = email;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 

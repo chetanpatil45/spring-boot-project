@@ -20,28 +20,35 @@ public class StudentController {
         return "redirect:/home";
     }
 
+    @PostMapping("/delete")
+    public String deleteStudent(@RequestParam("id") int id) {
+        studentService.deleteStudent(id);
+        return "redirect:/home";
+    }
+
+
 //    @GetMapping("/allstudents")
 //    public List<Stude"ntEntity> getAllStudents(){
 //        return studentService.getStudents();
 //    }
+//
+//    @GetMapping("email")
+//    public String getEmail(){
+//        return "Email";
+//    }
 
-    @GetMapping("email")
-    public String getEmail(){
-        return "Email";
-    }
+//    @PutMapping("/update/{id}")
+//    public String updateStudent(@PathVariable int id, @RequestBody Student student){
+//        return studentService.updateStudent(id,student) ? "Student Updated..." : "Failed to update...";
+//    }
 
-    @PutMapping("/update/{id}")
-    public String updateStudent(@PathVariable int id, @RequestBody Student student){
-        return studentService.updateStudent(id,student) ? "Student Updated..." : "Failed to update...";
-    }
+//    @DeleteMapping("/delete/{id}")
+//    public String deleteStudent(@PathVariable int id){
+//        return studentService.deleteStudent(id) ? "Student deleted..." : "Failed to delete";
+//    }
 
-    @DeleteMapping("/delete/{id}")
-    public String deleteStudent(@PathVariable int id){
-        return studentService.deleteStudent(id) ? "Student deleted..." : "Failed to delete";
-    }
-
-    @GetMapping("/get/{id}")
-    public Student getStudent(@PathVariable int id){
-        return studentService.getStudent(id);
-    }
+//    @GetMapping("/get/{id}")
+//    public Student getStudent(@PathVariable int id){
+//        return studentService.getStudent(id);
+//    }
 }

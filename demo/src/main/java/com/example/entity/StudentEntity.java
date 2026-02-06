@@ -7,13 +7,14 @@ import org.springframework.stereotype.Component;
 @Table(name = "studentinfo")
 public class StudentEntity {
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     private String name;
     private String email;
     private Integer age;
 
-    public StudentEntity(int id, String name, String email, int age) {
+    public StudentEntity(Integer id, String name, String email, Integer age) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -22,11 +23,11 @@ public class StudentEntity {
 
     public StudentEntity(){}
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -46,11 +47,11 @@ public class StudentEntity {
         this.email = email;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 

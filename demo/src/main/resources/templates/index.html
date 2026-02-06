@@ -17,7 +17,29 @@
         </div>
     </div>
 
-    <div class="students" id="students"></div>
+    <div class="students" id="students">
+        <div class="student-card">
+
+            <div class="left">
+                <div class="avatar">
+                    CB
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="right">
+                <p><b>Name:</b> Chetan Bachchhav</p>
+                <p><b>Email:</b> bachchhavchetan45@gmail.com</p>
+                <p><b>Age:</b> 22 </p>
+
+                <div class="actions">
+                    <button class="edit" onclick="editStudent(${i})">EDIT</button>
+                    <button class="delete" onclick="deleteStudent(${i})">DELETE</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="footer">
         © Student Management System 2026 | Developed by Chetan ❤️
@@ -61,39 +83,6 @@
 
     let editIndex = null;
 
-    function renderStudents() {
-        const container = document.getElementById("students");
-        container.innerHTML = ""; // reset before rendering
-
-        students.forEach((s, i) => {
-            container.innerHTML += `
-            <div class="student-card">
-
-                <div class="left">
-                <div class="avatar">
-                    ${s.name.split(" ").map(w => w[0]).join("")}
-                </div>
-                </div>
-
-                <div class="divider"></div>
-
-                <div class="right">
-                <p><b>Name:</b> ${s.name}</p>
-                <p><b>Email:</b> ${s.email}</p>
-                <p><b>Age:</b> ${s.age}</p>
-
-                <div class="actions">
-                    <button class="edit" onclick="editStudent(${i})">EDIT</button>
-                    <button class="delete" onclick="deleteStudent(${i})">DELETE</button>
-                </div>
-                </div>
-
-            </div>
-            `;
-
-        });
-    }
-
     function openModal() {
         editIndex = null;
         document.getElementById("modalTitle").innerText = "Add Student";
@@ -123,7 +112,6 @@
         }
 
         closeModal();
-        renderStudents();
     }
 
     function editStudent(index) {
@@ -146,8 +134,6 @@
     function toggleDark() {
         document.body.classList.toggle("dark");
     }
-
-    renderStudents();
 </script>
 
 </body>

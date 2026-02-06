@@ -13,7 +13,7 @@ public class LocalHostHandler {
 
     @GetMapping({"","/","/home"})
     public String openHomePage(Model model){
-        model.addAttribute("todos", studentService.getAllStud());
+        model.addAttribute("students", studentService.getAllStud());
         return "index";
     }
 

@@ -17,28 +17,34 @@
         </div>
     </div>
 
-    <div th:if="${#lists.isEmpty(todos)}" class="students">
+    <div th:if="${#lists.isEmpty(students)}" class="students">
         No Student found.
     </div>
 
-    <div class="students" id="students">
-        <div class="student-card">
+    <div class="students" id="students" >
+        <div class="student-card" th:each="stud: ${students}" >
 
             <div class="left">
-                <div class="avatar">
-                    CB
-                </div>
+                <div class="avatar" th:text="${stud.initials}"></div>
             </div>
+
 
             <div class="divider"></div>
 
             <div class="right">
-                <p><b>Name:</b> Chetan Bachchhav</p>
-                <p><b>Email:</b> bachchhavchetan45@gmail.com</p>
-                <p><b>Age:</b> 22 </p>
+                <p><b>Name:</b> <span th:text="${stud.getName()}" ></span></p>
+                <p><b>Email:</b> <span th:text="${stud.getEmail()}" ></span></p>
+                <p><b>Age:</b> <span th:text="${stud.getAge()}" ></span> </p>
 
                 <div class="actions">
-                    <button class="edit" onclick="editStudent(${i})">EDIT</button>
+                    <button class="edit"
+                            onclick="openEditModal(this)"
+                            th:data-id="${stud.id}"
+                            th:data-name="${stud.name}"
+                            th:data-email="${stud.email}"
+                            th:data-age="${stud.age}">
+                        EDIT
+                    </button>
                     <button class="delete" onclick="deleteStudent(${i})">DELETE</button>
                 </div>
             </div>
@@ -53,46 +59,58 @@
 <!-- Modal -->
 <div class="modal" id="modal">
     <div class="modal-content">
+        <form th:action="@{/add}" method="post">
         <h3 id="modalTitle">Add Student</h3>
 
-        <input type="text" id="name" placeholder="Name">
-        <input type="email" id="email" placeholder="Email">
-        <input type="number" id="age" placeholder="Age">
+            <input type="hidden" id="studentId" name="id">
+        <input type="text" id="name" name="name" placeholder="Name">
+        <input type="email" id="email" name="email" placeholder="Email">
+        <input type="number" id="age" name="age" placeholder="Age">
 
         <div class="modal-actions">
-            <button onclick="closeModal()">Cancel</button>
-            <button onclick="saveStudent()">Save</button>
+            <button type="button" onclick="closeModal()">Cancel</button>
+            <button type="submit">Save</button>
         </div>
+        </form>
     </div>
 </div>
 
 <script>
-    let students = [
-        {
-            name: "Chetan Bachhav",
-            email: "bachhavchetan45@gmail.com",
-            age: 22
-        },
-        {
-            name: "Chetan Bachhav",
-            email: "bachhavchetan45@gmail.com",
-            age: 22
-        },
-        {
-            name: "Chetan Patil",
-            email: "bachchhavchetan45@gmail.com",
-            age: 22
+    document.addEventListener("DOMContentLoaded", () => {
+        const theme = localStorage.getItem("theme");
+        const btn = document.querySelector(".dark-btn");
+
+        if (theme === "dark") {
+            document.body.classList.add("dark");
+            btn.innerText = "☀️";
         }
-    ];
+    });
+</script>
+
+
+<script>
+
+    function openModal() {
+        clearForm();
+        document.getElementById("modalTitle").innerText = "Add Student";
+        document.getElementById("modal").style.display = "flex";
+    }
+
+
+    function openEditModal(btn) {
+        document.getElementById("modalTitle").innerText = "Edit Student";
+        document.getElementById("modal").style.display = "flex";
+
+        document.getElementById("studentId").value = btn.dataset.id;
+        document.getElementById("name").value = btn.dataset.name;
+        document.getElementById("email").value = btn.dataset.email;
+        document.getElementById("age").value = btn.dataset.age;
+    }
+
 
     let editIndex = null;
 
-    function openModal() {
-        editIndex = null;
-        document.getElementById("modalTitle").innerText = "Add Student";
-        document.getElementById("modal").style.display = "flex";
-        clearForm();
-    }
+
 
     function closeModal() {
         document.getElementById("modal").style.display = "none";
@@ -102,21 +120,6 @@
         name.value = email.value = age.value = "";
     }
 
-    function saveStudent() {
-        const student = {
-            name: name.value,
-            email: email.value,
-            age: age.value
-        };
-
-        if (editIndex === null) {
-            students.push(student);
-        } else {
-            students[editIndex] = student;
-        }
-
-        closeModal();
-    }
 
     function editStudent(index) {
         editIndex = index;
@@ -135,8 +138,19 @@
     }
 
     function toggleDark() {
+        const btn = document.querySelector(".dark-btn");
         document.body.classList.toggle("dark");
+
+        if (document.body.classList.contains("dark")) {
+            localStorage.setItem("theme", "dark");
+            btn.innerText = "☀️";
+        } else {
+            localStorage.setItem("theme", "light");
+            btn.innerText = "🌙";
+        }
     }
+
+
 </script>
 
 </body>

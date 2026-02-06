@@ -3,23 +3,25 @@ package com.example.controller;
 import com.example.model.Student;
 import com.example.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 public class StudentController {
     @Autowired
     StudentService studentService;
 
 
     @PostMapping("/add")
-    public String addStudent(@RequestBody Student student){
+    public String addStudent(@ModelAttribute Student student){
         studentService.addStudent(student);
-        return "Student Added";
+//        return "Student Added";
+        return "redirect:/home";
     }
 
 //    @GetMapping("/allstudents")
-//    public List<StudentEntity> getAllStudents(){
+//    public List<Stude"ntEntity> getAllStudents(){
 //        return studentService.getStudents();
 //    }
 

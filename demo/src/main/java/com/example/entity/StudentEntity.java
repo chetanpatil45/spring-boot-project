@@ -11,7 +11,7 @@ public class StudentEntity {
 
     private String name;
     private String email;
-    private int age;
+    private Integer age;
 
     public StudentEntity(int id, String name, String email, int age) {
         this.id = id;
@@ -63,4 +63,12 @@ public class StudentEntity {
                 ", age=" + age +
                 '}';
     }
+
+    public String getInitials() {
+        if (name == null || name.isBlank()) return "";
+        String[] parts = name.trim().split("\\s+");
+        if (parts.length == 1) return parts[0].substring(0,1).toUpperCase();
+        return (parts[0].substring(0,1) + parts[1].substring(0,1)).toUpperCase();
+    }
+
 }

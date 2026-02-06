@@ -1,34 +1,27 @@
 package com.example.controller;
 
-import com.example.entity.StudentEntity;
 import com.example.model.Student;
 import com.example.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/studentapi/students")
 public class StudentController {
     @Autowired
     StudentService studentService;
 
-    @GetMapping
-    public String demo(){
-        return "Students -> ";
-    }
 
-    @PostMapping("/addstudent")
+    @PostMapping("/add")
     public String addStudent(@RequestBody Student student){
         studentService.addStudent(student);
         return "Student Added";
     }
 
-    @GetMapping("/allstudents")
-    public List<StudentEntity> getAllStudents(){
-        return studentService.getStudents();
-    }
+//    @GetMapping("/allstudents")
+//    public List<StudentEntity> getAllStudents(){
+//        return studentService.getStudents();
+//    }
 
     @GetMapping("email")
     public String getEmail(){

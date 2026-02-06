@@ -5,6 +5,7 @@ import com.example.entity.StudentEntity;
 import com.example.model.Student;
 import com.example.repository.StudentRepo;
 import jakarta.transaction.Transactional;
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,9 +34,8 @@ public class StudentService {
 //        students.add(studentEntity);
     }
 
-    public List<StudentEntity> getStudents() {
+    public List<StudentEntity> getAllStud() {
 //        return students;
-
         return studentRepo.findAll();
     }
 

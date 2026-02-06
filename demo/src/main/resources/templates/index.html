@@ -17,6 +17,10 @@
         </div>
     </div>
 
+    <div th:if="${#lists.isEmpty(todos)}" class="students">
+        No Student found.
+    </div>
+
     <div class="students" id="students">
         <div class="student-card">
 
@@ -127,7 +131,6 @@
     function deleteStudent(index) {
         if (confirm("Are you sure you want to delete this student?")) {
             students.splice(index, 1);
-            renderStudents();
         }
     }
 
